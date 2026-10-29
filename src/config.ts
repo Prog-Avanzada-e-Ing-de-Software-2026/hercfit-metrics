@@ -57,8 +57,8 @@ export const settings = {
     cycleTime: { small: 4, large: 7 },
     // 1.2 Review rate, percentage.
     reviewRate: 70,
-    // 3.1 Throughput, stories per active week.
-    throughput: { min: 3, max: 5 },
+    // 3.1 Throughput, stories per active development week.
+    throughput: { min: 3, max: 6 },
     // 3.2 Lead Time, active development days.
     leadTime: 14,
     // 2.1 Rule coverage, percentage.

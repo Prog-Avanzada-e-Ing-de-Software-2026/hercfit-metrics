@@ -4,7 +4,7 @@ import type { RuleCoverageResult } from '../types.js';
 
 interface RulesFile {
   total: number;
-  reglas: Array<{ id: string; concepto: string; critica: boolean; texto: string }>;
+  reglas: Array<{ id: string; concepto: string; texto: string }>;
 }
 
 interface VitestAssertion {

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+﻿import { readFileSync } from 'node:fs';
 import { ruleCoverage, loadRules } from './coverage.js';
 
 interface ImplementedMap {
@@ -52,8 +52,8 @@ function main(): void {
   const result = ruleCoverage(options.resultsPath);
   const rules = loadRules();
 
-  const criticalByStory = options.story && options.map ? (options.map[options.story] ?? null) : null;
-  const blocking = criticalByStory ? criticalByStory.filter((id) => result.missing.includes(id)) : [];
+  const declared = options.story && options.map ? (options.map[options.story] ?? null) : null;
+  const blocking = declared ? declared.filter((id) => result.missing.includes(id)) : [];
 
   console.log(`Reglas cubiertas: ${result.covered}/${result.total} (${result.percentage}%)`);
   if (result.missing.length > 0) {
@@ -63,11 +63,11 @@ function main(): void {
     console.log(`Con mas de un test: ${result.duplicated.join(', ')}`);
   }
   if (options.story) {
-    if (!criticalByStory) {
+    if (!declared) {
       console.error(`La historia ${options.story} no esta declarada en el mapa de reglas implementadas.`);
       process.exit(1);
     }
-    console.log(`Historia ${options.story}: implementa ${criticalByStory.join(', ')}`);
+    console.log(`Historia ${options.story}: implementa ${declared.join(', ')}`);
   }
 
   const rulesById = new Map(rules.reglas.map((rule) => [rule.id, rule]));
