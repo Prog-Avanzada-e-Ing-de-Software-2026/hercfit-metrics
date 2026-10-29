@@ -1,0 +1,4 @@
+{
+  "_comment": "Reglas de negocio que implementa cada historia. El gate de CI usa este mapa para exigir test antes de cerrar una HU. Se completa a medida que se implementan las historias.",
+  "_formato": { "HU-1": ["RN-01", "RN-02"] }
+}

@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-29",
+  "takenAt": "2026-10-29T19:21:37.302Z",
+  "tasks": {
+    "86e3x5n3y": {
+      "id": "86e3x5n3y",
+      "name": "HU 15 - Restaurar contraseña",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3x5n3k": {
+      "id": "86e3x5n3k",
+      "name": "HU 14 - Iniciar sesión",
+      "status": "planning",
+      "points": 2,
+      "isStory": true
+    },
+    "86e3x5n2v": {
+      "id": "86e3x5n2v",
+      "name": "HU 13 - Consultar evolución por ejercicio",
+      "status": "planning",
+      "points": 3,
+      "isStory": true
+    },
+    "86e3x5n2c": {
+      "id": "86e3x5n2c",
+      "name": "HU 12 - Consultar récord histórico por ejercicio",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3x5n1v": {
+      "id": "86e3x5n1v",
+      "name": "HU 11 - Consultar historial de asistencias",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3x5gpu": {
+      "id": "86e3x5gpu",
+      "name": "HU 10 - Consultar última carga usada en un ejercicio",
+      "status": "planning",
+      "points": 0.5,
+      "isStory": true
+    },
+    "86e3x5gpb": {
+      "id": "86e3x5gpb",
+      "name": "HU 9 - Consultar el historial de entrenamientos",
+      "status": "planning",
+      "points": 2,
+      "isStory": true
+    },
+    "86e3x5gnd": {
+      "id": "86e3x5gnd",
+      "name": "HU 8 - Registrar entrenamiento",
+      "status": "planning",
+      "points": 5,
+      "isStory": true
+    },
+    "86e3x5gn2": {
+      "id": "86e3x5gn2",
+      "name": "HU 7 - Eliminar plan",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3x5gmk": {
+      "id": "86e3x5gmk",
+      "name": "HU 6 - Modificar plan",
+      "status": "planning",
+      "points": 2,
+      "isStory": true
+    },
+    "86e3x511a": {
+      "id": "86e3x511a",
+      "name": "Evaluacion metrica 2.2",
+      "status": "planning",
+      "points": null,
+      "isStory": false
+    },
+    "86e3x072w": {
+      "id": "86e3x072w",
+      "name": "HU 5 - Consultar alumnos sin plan o plan por terminar",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3x072t": {
+      "id": "86e3x072t",
+      "name": "HU 4 - Consultar historial de planes",
+      "status": "planning",
+      "points": 2,
+      "isStory": true
+    },
+    "86e3x072n": {
+      "id": "86e3x072n",
+      "name": "HU 3 - Consultar plan",
+      "status": "planning",
+      "points": 2,
+      "isStory": true
+    },
+    "86e3x0631": {
+      "id": "86e3x0631",
+      "name": "HU 2 - Administrar objetivos de planes",
+      "status": "planning",
+      "points": 1,
+      "isStory": true
+    },
+    "86e3wyhq7": {
+      "id": "86e3wyhq7",
+      "name": "HU 1 - Registrar plan de entrenamiento",
+      "status": "planning",
+      "points": 5,
+      "isStory": true
+    },
+    "86e3w4eeq": {
+      "id": "86e3w4eeq",
+      "name": "Poker Planning",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3w4884": {
+      "id": "86e3w4884",
+      "name": "Definir metricas",
+      "status": "in review",
+      "points": null,
+      "isStory": false
+    },
+    "86e3w47vb": {
+      "id": "86e3w47vb",
+      "name": "Plan de pruebas",
+      "status": "in review",
+      "points": null,
+      "isStory": false
+    },
+    "86e3w05ru": {
+      "id": "86e3w05ru",
+      "name": "Definir buenas prácticas",
+      "status": "in review",
+      "points": 0,
+      "isStory": false
+    },
+    "86e3vpjrv": {
+      "id": "86e3vpjrv",
+      "name": "Guia de despliegue",
+      "status": "planning",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vphqz": {
+      "id": "86e3vphqz",
+      "name": "Arquitectura",
+      "status": "in review",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmy7v": {
+      "id": "86e3vmy7v",
+      "name": "Evaluación de métricas",
+      "status": "ready to do",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmy7m": {
+      "id": "86e3vmy7m",
+      "name": "Retrospectiva",
+      "status": "planning",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmy44": {
+      "id": "86e3vmy44",
+      "name": "Despliegue inicial",
+      "status": "ready to do",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxzw": {
+      "id": "86e3vmxzw",
+      "name": "Estimaciones",
+      "status": "in progress",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxy0": {
+      "id": "86e3vmxy0",
+      "name": "Plan de Proyecto",
+      "status": "in progress",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxnx": {
+      "id": "86e3vmxnx",
+      "name": "Diseño de wireframes",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxk5": {
+      "id": "86e3vmxk5",
+      "name": "Definir historias de usuario a incluir",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxfr": {
+      "id": "86e3vmxfr",
+      "name": "Presentar propuesta el PO",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmxf4": {
+      "id": "86e3vmxf4",
+      "name": "Definir alcance",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmvw6": {
+      "id": "86e3vmvw6",
+      "name": "Exploración del dominio",
+      "status": "complete",
+      "points": null,
+      "isStory": false
+    },
+    "86e3vmvuv": {
+      "id": "86e3vmvuv",
+      "name": "Analisis de dominio",
+      "status": "in review",
+      "points": null,
+      "isStory": false
+    }
+  }
+}

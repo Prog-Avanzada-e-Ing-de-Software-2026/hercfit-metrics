@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+!.env.example
+coverage/
+.vitest-results.json
+yarn-error.log
+.yarn/install-state.gz

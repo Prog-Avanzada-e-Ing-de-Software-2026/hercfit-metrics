@@ -1,0 +1,259 @@
+{
+    "version":  "2.0",
+    "source":  "Proyecto3_Back/docs/dominio/Reglas de negocio.md",
+    "total":  42,
+    "reglas":  [
+                   {
+                       "id":  "RN-01",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "El plan se separa en bloques de movilidad, core y fuerza (este último incluye la parte principal del entrenamiento, todo lo que no sea movilidad o core), y debe tener ejercicios en los tres bloques."
+                   },
+                   {
+                       "id":  "RN-02",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Los bloques de movilidad y core son iguales para todos los días del plan, mientras que el bloque de fuerza es particular de cada día."
+                   },
+                   {
+                       "id":  "RN-03",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "El plan no puede ser para más de 5 días (el gym solo abre 5 días a la semana) y debe ser para al menos 1."
+                   },
+                   {
+                       "id":  "RN-04",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Un plan tiene una duración variable en semanas, con un mínimo de 4 y un máximo de 12."
+                   },
+                   {
+                       "id":  "RN-05",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Un ejercicio no se puede repetir dentro del mismo día del plan."
+                   },
+                   {
+                       "id":  "RN-06",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "Todos los ejercicios comparten la misma progresión semanal. Si se quiere indicar algo diferente para uno, se hace como comentario."
+                   },
+                   {
+                       "id":  "RN-07",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Debe existir exactamente una prescripción semanal por cada semana del plan."
+                   },
+                   {
+                       "id":  "RN-08",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "Un plan está finalizado si su fecha de fin es anterior a hoy, vigente si abarca la fecha actual y futuro si su fecha de inicio es posterior a hoy. El plan que se le muestra al alumno para guiarlo es el vigente."
+                   },
+                   {
+                       "id":  "RN-09",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Un alumno no puede tener planes cuyas fechas se solapen, pero un profesor puede cargar planes futuros (con fecha de inicio posterior a la fecha de fin de su plan vigente) para un alumno."
+                   },
+                   {
+                       "id":  "RN-10",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "No se le puede hacer un plan a un alumno dado de baja."
+                   },
+                   {
+                       "id":  "RN-11",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "Solo los profesores pueden armar los planes de entrenamiento."
+                   },
+                   {
+                       "id":  "RN-12",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "Solo el profesor asignado al alumno puede modificar o eliminar su plan."
+                   },
+                   {
+                       "id":  "RN-13",
+                       "concepto":  "Plan",
+                       "critica":  false,
+                       "texto":  "Un plan personalizado se puede crear desde cero o copiando otro plan personalizado que haya creado ese mismo profesor anteriormente."
+                   },
+                   {
+                       "id":  "RN-14",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "Un plan finalizado no se modifica."
+                   },
+                   {
+                       "id":  "RN-15",
+                       "concepto":  "Plan",
+                       "critica":  true,
+                       "texto":  "No se puede quitar un día ni eliminar un plan con entrenamientos asociados."
+                   },
+                   {
+                       "id":  "RN-16",
+                       "concepto":  "Entrenamiento",
+                       "critica":  false,
+                       "texto":  "Un entrenamiento se asocia al plan vigente del alumno, a un día y a una semana de ese plan elegidos por el alumno, pero el alumno puede registrar cualquier ejercicio del catálogo, esté o no en el plan, y no es obligatorio registrar todos los ejercicios del día."
+                   },
+                   {
+                       "id":  "RN-17",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "No se puede registrar entrenamientos si el alumno no tiene plan vigente."
+                   },
+                   {
+                       "id":  "RN-18",
+                       "concepto":  "Entrenamiento",
+                       "critica":  false,
+                       "texto":  "La fecha con que se registra un entrenamiento es siempre la actual, sin carga retroactiva."
+                   },
+                   {
+                       "id":  "RN-19",
+                       "concepto":  "Entrenamiento",
+                       "critica":  false,
+                       "texto":  "Los ejercicios del día elegido se deben ofrecer como guía, junto con la carga de trabajo (prescripción semanal) de la semana elegida."
+                   },
+                   {
+                       "id":  "RN-20",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "Un alumno tiene un único entrenamiento en curso a la vez."
+                   },
+                   {
+                       "id":  "RN-21",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "Un ejercicio no se puede repetir dentro del mismo entrenamiento."
+                   },
+                   {
+                       "id":  "RN-22",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "Una serie debe tener cantidad ≥ 1 y peso ≥ 0 (o ausente)."
+                   },
+                   {
+                       "id":  "RN-23",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "Para finalizar un entrenamiento se necesita al menos un ejercicio realizado, y cada ejercicio con al menos una serie."
+                   },
+                   {
+                       "id":  "RN-24",
+                       "concepto":  "Entrenamiento",
+                       "critica":  true,
+                       "texto":  "Un entrenamiento finalizado es inmutable."
+                   },
+                   {
+                       "id":  "RN-25",
+                       "concepto":  "Alumno y Profesor",
+                       "critica":  true,
+                       "texto":  "No se pueden tener registrados dos alumnos o dos profesores con igual nombre y número de documento."
+                   },
+                   {
+                       "id":  "RN-26",
+                       "concepto":  "Alumno y Profesor",
+                       "critica":  true,
+                       "texto":  "Solo se asignan profesores activos y solo se asignan o reasignan alumnos activos."
+                   },
+                   {
+                       "id":  "RN-27",
+                       "concepto":  "Alumno y Profesor",
+                       "critica":  true,
+                       "texto":  "Al dar de baja un profesor, sus alumnos quedan sin profesor asignado, pudiendo luego ser reasignados."
+                   },
+                   {
+                       "id":  "RN-28",
+                       "concepto":  "Alumno",
+                       "critica":  false,
+                       "texto":  "Un alumno sin profesor puede seguir consultando su plan y entrenando. No aparece en el seguimiento de ningún profesor."
+                   },
+                   {
+                       "id":  "RN-29",
+                       "concepto":  "Alumno",
+                       "critica":  false,
+                       "texto":  "El historial de un alumno dado de baja se conserva."
+                   },
+                   {
+                       "id":  "RN-30",
+                       "concepto":  "Alumno",
+                       "critica":  false,
+                       "texto":  "Un alumno dado de baja puede volver a darse de alta y el seguimiento de su progreso debe continuarse donde quedó."
+                   },
+                   {
+                       "id":  "RN-31",
+                       "concepto":  "Alumno",
+                       "critica":  false,
+                       "texto":  "Al reactivar un alumno, conserva su profesor si sigue activo; si no, queda sin profesor."
+                   },
+                   {
+                       "id":  "RN-32",
+                       "concepto":  "Usuario",
+                       "critica":  false,
+                       "texto":  "Alumno y profesor tienen un usuario con email obligatorio y único, creado en el alta."
+                   },
+                   {
+                       "id":  "RN-33",
+                       "concepto":  "Usuario",
+                       "critica":  false,
+                       "texto":  "La contraseña por defecto que se asigna a alumnos y profesores es su documento."
+                   },
+                   {
+                       "id":  "RN-34",
+                       "concepto":  "Usuario",
+                       "critica":  true,
+                       "texto":  "Un profesor o alumno dado de baja no puede acceder a la aplicación."
+                   },
+                   {
+                       "id":  "RN-35",
+                       "concepto":  "Plan, Entrenamiento, Alumno y Profesor",
+                       "critica":  false,
+                       "texto":  "El plan y los entrenamientos de un alumno son visibles para su profesor y solo para ese alumno."
+                   },
+                   {
+                       "id":  "RN-36",
+                       "concepto":  "Catálogo",
+                       "critica":  false,
+                       "texto":  "El nombre es obligatorio y único dentro de cada catálogo, sin distinguir mayúsculas."
+                   },
+                   {
+                       "id":  "RN-37",
+                       "concepto":  "Catálogo",
+                       "critica":  true,
+                       "texto":  "No se puede eliminar un elemento en uso: categoría, material o unidad (por algún ejercicio), objetivo (por algún plan), ejercicio (por algún plan o entrenamiento)."
+                   },
+                   {
+                       "id":  "RN-38",
+                       "concepto":  "Catálogo",
+                       "critica":  false,
+                       "texto":  "Categoría y unidad del ejercicio son obligatorias. El material es opcional (ej.: plancha)."
+                   },
+                   {
+                       "id":  "RN-39",
+                       "concepto":  "Catálogo",
+                       "critica":  false,
+                       "texto":  "La foto de un ejercicio es opcional. Si se reemplaza o se quita, los planes y entrenamientos que lo referencian pasan a mostrar la foto vigente."
+                   },
+                   {
+                       "id":  "RN-40",
+                       "concepto":  "Seguimiento",
+                       "critica":  false,
+                       "texto":  "La semana va de lunes a domingo y el mes es calendario."
+                   },
+                   {
+                       "id":  "RN-41",
+                       "concepto":  "Seguimiento",
+                       "critica":  true,
+                       "texto":  "La mejor serie de un ejercicio se determina así: si las series del ejercicio tienen peso, es la de mayor peso y, si empatan, la de mayor cantidad; si ninguna tiene peso (peso ausente o igual a 0), es la de mayor cantidad. Si hay empate total entre series, gana la más antigua. La unidad define qué significa la cantidad (repeticiones, segundos o metros)."
+                   },
+                   {
+                       "id":  "RN-42",
+                       "concepto":  "Seguimiento",
+                       "critica":  true,
+                       "texto":  "El récord de un ejercicio es su mejor serie considerando todo el historial del alumno; la evolución es la mejor serie de cada entrenamiento dentro del período indicado."
+                   }
+               ]
+}

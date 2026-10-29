@@ -1,0 +1,39 @@
+{
+  "week": {
+    "n": 3,
+    "desde": "2026-10-26",
+    "hasta": "2026-11-02",
+    "activa": true,
+    "desarrollo": false,
+    "foco": "Backlog estimado, metricas, plan de pruebas y entorno base"
+  },
+  "generatedAt": "2026-10-29T19:21:37.305Z",
+  "cycleTime": {
+    "averageDays": null,
+    "sample": 0,
+    "items": [],
+    "openOverdue": []
+  },
+  "throughput": {
+    "weekStart": "2026-10-26",
+    "weekEnd": "2026-11-02",
+    "stories": [],
+    "total": 0,
+    "meetsTarget": true,
+    "evaluated": false
+  },
+  "leadTime": {
+    "averageActiveDays": null,
+    "sample": 0,
+    "items": [],
+    "exceeded": []
+  },
+  "reviewRate": null,
+  "ruleCoverage": null,
+  "warnings": [
+    "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
+    "El Lead Time usa la fecha de cierre de la HU como proxy del despliegue hasta que el workflow de deploy registre el evento real.",
+    "Tasa de revision de PRs omitida: falta GH_PAT o GITHUB_TOKEN.",
+    "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
+  ]
+}

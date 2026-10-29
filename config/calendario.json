@@ -1,0 +1,17 @@
+{
+  "proyecto": "HercFit MVP",
+  "inicio": "2026-10-12",
+  "fin": "2026-12-14",
+  "descripcion": "Cronograma del Plan de proyecto. Una semana inactiva es una pausa programada y no cuenta como dias activos de desarrollo. Solo las semanas con foco de desarrollo evaluan el throughput.",
+  "semanas": [
+    { "n": 1, "desde": "2026-10-12", "hasta": "2026-10-19", "activa": true, "desarrollo": false, "foco": "Exploracion, alcance, analisis de dominio y SPMP inicial" },
+    { "n": 2, "desde": "2026-10-19", "hasta": "2026-10-26", "activa": true, "desarrollo": false, "foco": "Wireframes, arquitectura e historias de usuario iniciales" },
+    { "n": 3, "desde": "2026-10-26", "hasta": "2026-11-02", "activa": true, "desarrollo": false, "foco": "Backlog estimado, metricas, plan de pruebas y entorno base" },
+    { "n": 4, "desde": "2026-11-02", "hasta": "2026-11-09", "activa": true, "desarrollo": true, "foco": "Modulo de planes de entrenamiento" },
+    { "n": 5, "desde": "2026-11-09", "hasta": "2026-11-16", "activa": false, "desarrollo": false, "motivo": "Pausa programada por indisponibilidad del equipo" },
+    { "n": 6, "desde": "2026-11-16", "hasta": "2026-11-23", "activa": true, "desarrollo": true, "foco": "Entrenamientos, estadisticas y catalogo" },
+    { "n": 7, "desde": "2026-11-23", "hasta": "2026-11-30", "activa": true, "desarrollo": true, "foco": "Validacion con el Product Owner y ajustes" },
+    { "n": 8, "desde": "2026-11-30", "hasta": "2026-12-07", "activa": true, "desarrollo": true, "foco": "Autenticacion y administracion de usuarios" },
+    { "n": 9, "desde": "2026-12-07", "hasta": "2026-12-14", "activa": true, "desarrollo": true, "foco": "Pruebas integrales, despliegue final, metricas y retrospectiva" }
+  ]
+}
