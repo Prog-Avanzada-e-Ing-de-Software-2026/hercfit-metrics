@@ -4,6 +4,8 @@ Recolección y reporte automático de las métricas del MVP de HercFit.
 
 El repositorio no contiene lógica del producto: solo lee el tablero de ClickUp, los Pull Requests de GitHub y el reporte de pruebas del backend, y produce un reporte semanal con el estado de cada indicador.
 
+El documento normativo de las métricas vive en [`docs/Metricas.md`](docs/Metricas.md) y es la fuente de verdad de las fórmulas y los umbrales que aplica este colector. Ante cualquier discrepancia entre el código y ese documento, el documento manda y el código se corrige.
+
 ## Métricas cubiertas
 
 | Métrica | Fuente | Automatización |
