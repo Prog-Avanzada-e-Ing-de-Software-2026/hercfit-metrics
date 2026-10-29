@@ -80,8 +80,13 @@ async function main(): Promise<void> {
   writeFileSync(join(settings.paths.reports, `${name}.json`), JSON.stringify(input, null, 2), 'utf8');
   console.log(`Reporte: ${markdownPath}`);
 
-  const sent = await sendTelegram(input);
-  if (sent) console.log('Telegram: enviado.');
+  // A Telegram outage must not fail the metrics job: the report is already written.
+  try {
+    const sent = await sendTelegram(input);
+    if (sent) console.log('Telegram: enviado.');
+  } catch (error) {
+    console.warn(`Telegram: no se pudo enviar (${(error as Error).message}).`);
+  }
 }
 
 main().catch((error: unknown) => {
