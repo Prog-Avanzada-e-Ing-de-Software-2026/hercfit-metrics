@@ -7,7 +7,7 @@
     "desarrollo": false,
     "foco": "Backlog estimado, metricas, plan de pruebas y entorno base"
   },
-  "generatedAt": "2026-10-29T19:30:14.345Z",
+  "generatedAt": "2026-10-29T19:49:29.694Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -28,12 +28,28 @@
     "items": [],
     "exceeded": []
   },
-  "reviewRate": null,
+  "reviewRate": {
+    "merged": 0,
+    "reviewed": 0,
+    "rate": null,
+    "meetsTarget": false,
+    "repositories": [
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
+        "merged": 0,
+        "reviewed": 0
+      },
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
+        "merged": 0,
+        "reviewed": 0
+      }
+    ]
+  },
   "ruleCoverage": null,
   "warnings": [
     "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
     "El Lead Time usa la fecha de cierre de la HU como proxy del despliegue hasta que el workflow de deploy registre el evento real.",
-    "Tasa de revision de PRs omitida: falta GH_PAT o GITHUB_TOKEN.",
     "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
   ]
 }
