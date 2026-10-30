@@ -135,56 +135,33 @@ Evalúan la salud gerencial del proyecto: el control del cronograma, el cumplimi
 
 # ***4\. Proceso de evaluación automatizada de métricas***  {#4.-proceso-de-evaluación-automatizada-de-métricas}
 
-La evaluación se automatiza mediante el repositorio **`hercfit-metrics`**, que actúa como colector: no contiene lógica del producto, solo lee las fuentes de datos y produce el reporte. Se ejecuta en GitHub Actions con una programación diaria a las 09:00 (hora Argentina) y también puede dispararse manualmente o ante eventos de los repositorios.
+Las métricas se calculan automáticamente con el repositorio **`hercfit-metrics`**, que se ejecuta en **GitHub Actions una vez por día**. El colector no contiene lógica del producto: lee las fuentes de datos, calcula los indicadores y publica el resultado. También puede ejecutarse de forma manual.
 
-## *4.1. Fuentes de datos por métrica* {#4.1.-fuentes-de-datos-por-métrica}
+## *4.1. Fuentes de datos* {#4.1.-fuentes-de-datos}
 
-| Métrica | Fuente | Mecanismo |
-| :---- | :---- | :---- |
-| 1.1 Cycle Time | ClickUp | Snapshot diario del estado de cada tarjeta |
-| 1.2 Tasa de revisión | GitHub | Pull Requests mergeadas y sus revisiones |
-| 2.1 Cobertura de reglas | Vitest | Reporte JSON y tags `[RN-nn]` en los tests |
-| 2.2 Eficiencia operativa | Medición manual | E2E cronometrado sobre el entorno desplegado |
-| 3.1 Throughput | ClickUp | HUs completadas por semana de desarrollo |
-| 3.2 Lead Time | GitHub | Merge a `develop` declarado en el Pull Request |
+| Métrica | Fuente |
+| :---- | :---- |
+| 1.1 Cycle Time | ClickUp: estado de las tarjetas |
+| 1.2 Tasa de revisión | GitHub: Pull Requests y revisiones |
+| 2.1 Cobertura de reglas | Vitest: tests con identificador de regla |
+| 2.2 Eficiencia operativa | Medición manual E2E |
+| 3.1 Throughput | ClickUp: HUs completadas |
+| 3.2 Lead Time | GitHub: merge a `develop` |
 
-## *4.2. Recolección* {#4.2.-recolección}
+## *4.2. Cálculo y publicación* {#4.2.-cálculo-y-publicación}
 
-**ClickUp.** La API no expone el historial de transiciones en el plan del equipo (el endpoint de tiempo por estado responde 403), por lo que el colector guarda un snapshot diario con el estado de cada tarjeta. La transición a *In Progress* se reconstruye por diferencia entre snapshots y la finalización usa la fecha de cierre exacta que provee ClickUp. Las historias se identifican por el campo *Tipo de Tarea* = *Historia de Usuario*, no por el nombre.
+Cada corrida guarda un snapshot del estado del tablero, calcula las métricas automáticas, las compara con sus umbrales y publica un reporte en el repositorio. Cuando un indicador queda fuera de rango, se envía una alerta al bot de Telegram del grupo.
 
-**GitHub.** Se consultan las Pull Requests mergeadas de ambos repositorios y, para cada una, sus revisiones. Una PR cuenta como revisada cuando tiene al menos dos aprobaciones de personas distintas, excluyendo al autor y a los bots, y considerando el último estado de cada revisor: un cambio solicitado posterior invalida una aprobación anterior.
+## *4.3. Verificación en el flujo de desarrollo* {#4.3.-verificación-en-el-flujo-de-desarrollo}
 
-**Vitest.** El pipeline del backend ejecuta la suite con salida JSON y el colector extrae los identificadores `[RN-nn]` de los tests que pasan. El catálogo de reglas se lee del documento normativo del dominio, sin una segunda copia que pueda desincronizarse.
+El pipeline del backend ejecuta verificación de tipos, análisis estático y pruebas, y un gate que exige que toda regla declarada por una historia de usuario tenga al menos un test que pase. Antes del despliegue final, el mismo gate exige el 100 % de las reglas del dominio.
 
-## *4.3. Cálculo y umbrales* {#4.3.-cálculo-y-umbrales}
+## *4.4. Convenciones que sostienen la automatización* {#4.4.-convenciones-que-sostienen-la-automatización}
 
-| Métrica | Cálculo | Umbral |
-| :---- | :---- | :---- |
-| 1.1 Cycle Time | Promedio de días entre *In Progress* y la fecha de cierre | 4 días (1-2 SP), 7 días (5 SP) |
-| 1.2 Tasa de revisión | PRs con ≥ 2 aprobaciones / PRs mergeadas × 100 | ≥ 70 % |
-| 2.1 Cobertura de reglas | Reglas con test que pasa / reglas del documento × 100 | 100 % antes del despliegue final |
-| 3.1 Throughput | Promedio de HUs completadas por semana de desarrollo | ≥ 4 HUs por semana |
-| 3.2 Lead Time | Promedio de días activos entre *Ready to do* y el merge a `develop` | < 14 días activos |
+- Cada test declara las reglas que verifica con el identificador `[RN-nn]` en su nombre.
+- Cada Pull Request declara la historia (`HU: <n>`) y las reglas que implementa (`Reglas: RN-nn`).
+- Las tarjetas de ClickUp se mueven a *In Progress*, *Ready to do* y *Done* según el flujo del tablero.
 
-El Lead Time excluye los períodos de pausa programada definidos en el cronograma del proyecto. El Throughput promedia únicamente semanas con foco de desarrollo, por lo que las semanas de planificación y la pausa no afectan el indicador.
+## *4.5. Limitaciones conocidas* {#4.5.-limitaciones-conocidas}
 
-## *4.4. Alertas* {#4.4.-alertas}
-
-El reporte se publica en el repositorio y se envía a un bot de Telegram con las métricas en estado de alerta. Se notifica cuando una historia en progreso supera su umbral de Cycle Time, cuando la tasa de revisión cae por debajo del 70 %, cuando la cobertura de reglas no alcanza el 100 %, cuando el promedio de Throughput no supera las 4 HUs semanales o cuando un Lead Time excede los 14 días activos.
-
-## *4.5. Verificación en el flujo de desarrollo* {#4.5.-verificación-en-el-flujo-de-desarrollo}
-
-El pipeline del backend ejecuta verificación de tipos, análisis estático, la suite de pruebas y el gate de cobertura de reglas. El gate exige que toda regla declarada por una historia de usuario tenga al menos un test que pase: si falta, la integración falla y la historia no se considera terminada. Antes del despliegue final se ejecuta el mismo gate en su modo estricto, que exige el 100 % de las reglas del dominio.
-
-## *4.6. Convenciones que sostienen la automatización* {#4.6.-convenciones-que-sostienen-la-automatización}
-
-- **Estados en ClickUp:** las tarjetas se mueven a *In Progress* al comenzar el desarrollo, a *Ready to do* antes de tomarlas y a *Done* únicamente tras fusionar la PR y superar las pruebas.
-- **Tags en los tests:** cada test declara las reglas que verifica con el formato `[RN-09]` en su nombre.
-- **Declaración en el Pull Request:** cada PR incluye una línea `Reglas: RN-01, RN-05` con las reglas que implementa y una línea `HU: <n>` con la historia de usuario asociada, que es la que permite calcular el Lead Time.
-
-## *4.7. Limitaciones conocidas* {#4.7.-limitaciones-conocidas}
-
-- El inicio del Cycle Time tiene precisión de un día, porque se observa mediante snapshot diario y no por evento.
-- El Lead Time requiere que la historia se integre a `develop` y que el Pull Request la declare; sin esa declaración la historia no es medible.
-- La métrica 2.2 se mide de forma manual por decisión del equipo, dado que evalúa tiempos de interacción humana que no pueden inferirse del código.
-- Las reglas de protección de rama que bloquearían el merge ante un gate fallido requieren un plan pago de GitHub; en el plan actual el resultado del pipeline es informativo.
+El inicio del Cycle Time tiene precisión de un día, porque se observa por snapshot diario. El Lead Time depende de que la historia se integre a `develop`. La métrica 2.2 es manual porque evalúa tiempos de interacción humana.
