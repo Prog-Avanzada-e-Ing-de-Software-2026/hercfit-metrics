@@ -24,10 +24,11 @@ El documento normativo de las métricas vive en [`docs/Metricas.md`](docs/Metric
 estado de cada tarjeta en `state/snapshots/`. La transición a `in progress` se reconstruye por
 diferencia entre snapshots; la finalización usa el `date_closed` exacto de ClickUp.
 
-**Lead Time.** Arranca en el pase a `ready to do` y termina en el despliegue. Mientras el workflow
-de despliegue no registre el evento real, se usa la fecha de cierre como proxy. Los días se cuentan
-**activos**, según `config/calendario.json`: la semana 5 del cronograma es una pausa programada y
-no suma.
+**Lead Time.** Arranca en el pase a `ready to do` y termina en el despliegue. La fecha de despliegue
+sale de la corrida exitosa del workflow `deploy_heroku.yml` de `Proyecto3_Back`: GitHub no crea un
+Deployment salvo que el job declare `environment`, así que la corrida del workflow es el evento real.
+Los días se cuentan **activos**, según `config/calendario.json`: la semana 5 del cronograma es una
+pausa programada y no suma.
 
 **Cobertura de reglas.** Cada test declara las reglas que verifica en su nombre:
 
@@ -83,5 +84,5 @@ Para que eso sea usable durante el desarrollo, el gate corre **por historia**:
 ## Limitaciones conocidas
 
 - El inicio del Cycle Time tiene precisión de un día, porque se observa por snapshot diario.
-- El Lead Time usa la fecha de cierre como proxy del despliegue hasta que exista el workflow de deploy.
+- El Lead Time toma el primer deploy exitoso posterior al cierre de la historia. Si dos historias cierran juntas, comparten ese deploy.
 - Los snapshots se versionan en el repositorio: sin ellos se pierde el historial de transiciones.

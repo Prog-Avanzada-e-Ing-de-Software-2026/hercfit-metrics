@@ -8,6 +8,7 @@ import { cycleTime } from './metrics/cycle-time.js';
 import { throughput } from './metrics/throughput.js';
 import { leadTime } from './metrics/lead-time.js';
 import { reviewRate } from './github/review-rate.js';
+import { fetchDeployDates } from './github/deployments.js';
 import { ruleCoverage } from './rules/coverage.js';
 import { renderMarkdown } from './report/markdown.js';
 import type { ReportInput } from './report/markdown.js';
@@ -36,12 +37,25 @@ async function main(): Promise<void> {
 
   const warnings: string[] = [
     'El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.',
-    'El Lead Time usa la fecha de cierre de la HU como proxy del despliegue hasta que el workflow de deploy registre el evento real.',
   ];
 
   const cycle = cycleTime(traces, today);
   const flow = throughput(traces, bounds.start, bounds.end, week?.desarrollo ?? false);
-  const lead = leadTime(traces);
+
+  let deploys: string[] = [];
+  if (settings.github.token) {
+    try {
+      deploys = await fetchDeployDates();
+      console.log(`Deploys exitosos detectados: ${deploys.length}.`);
+    } catch (error) {
+      warnings.push(`No se pudieron leer los deploys: ${(error as Error).message}`);
+    }
+  }
+  if (deploys.length === 0) {
+    warnings.push('Sin deploys exitosos registrados: el Lead Time queda sin datos hasta el primer deploy.');
+  }
+
+  const lead = leadTime(traces, deploys);
 
   let review = null;
   if (settings.github.token) {

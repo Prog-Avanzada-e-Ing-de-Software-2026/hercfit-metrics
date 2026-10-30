@@ -149,7 +149,7 @@ export function renderMarkdown(input: ReportInput): string {
 
   lines.push('## 3.2 Lead Time');
   lines.push('');
-  lines.push('Dias activos entre el pase a "Ready to do" y el despliegue. La semana 5 del cronograma no cuenta.');
+  lines.push('Dias activos entre el pase a "Ready to do" y el primer deploy exitoso posterior al cierre. La semana 5 del cronograma no cuenta.');
   lines.push('');
   if (input.leadTime.sample === 0) {
     lines.push('Sin historias medibles todavia.');

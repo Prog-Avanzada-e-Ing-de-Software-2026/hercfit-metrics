@@ -47,6 +47,10 @@ export const settings = {
       'Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back',
       'Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front',
     ],
+    deploy: {
+      repo: 'Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back',
+      workflow: 'deploy_heroku.yml',
+    },
   },
   telegram: {
     token: process.env.TELEGRAM_BOT_TOKEN ?? '',

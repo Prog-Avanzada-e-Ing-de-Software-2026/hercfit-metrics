@@ -1,18 +1,19 @@
 import { settings } from '../config.js';
 import { activeDaysBetween } from '../calendar.js';
+import { firstDeployAfter } from '../github/deployments.js';
 import { round } from './cycle-time.js';
 import type { LeadTimeResult, StoryTrace } from '../types.js';
 
 /**
  * Lead Time starts when the story moves to "Ready to do" and ends when it is
- * deployed to the test environment. Until the deployment workflow stamps that
- * event, completion (`date_closed`) is used as the deployment proxy.
+ * deployed. The deployment date comes from the successful run of the deploy
+ * workflow; without a deployment after closing, the story is not measurable.
  */
-export function leadTime(traces: StoryTrace[]): LeadTimeResult {
+export function leadTime(traces: StoryTrace[], deploys: string[]): LeadTimeResult {
   const items = traces
     .filter((trace) => trace.readyAt !== null)
     .map((trace) => {
-      const deployedAt = trace.doneAt;
+      const deployedAt = trace.doneAt !== null ? firstDeployAfter(trace.doneAt, deploys) : null;
       const activeDays =
         trace.readyAt !== null && deployedAt !== null ? activeDaysBetween(trace.readyAt, deployedAt) : null;
       return { id: trace.id, name: trace.name, readyAt: trace.readyAt, deployedAt, activeDays };
