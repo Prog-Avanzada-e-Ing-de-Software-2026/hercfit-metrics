@@ -1,22 +1,23 @@
 import { settings } from '../config.js';
 import { activeDaysBetween } from '../calendar.js';
-import { firstDeployAfter } from '../github/deployments.js';
+import { storyNumberOf } from '../github/merges.js';
 import { round } from './cycle-time.js';
 import type { LeadTimeResult, StoryTrace } from '../types.js';
 
 /**
  * Lead Time starts when the story moves to "Ready to do" and ends when it is
- * deployed. The deployment date comes from the successful run of the deploy
- * workflow; without a deployment after closing, the story is not measurable.
+ * integrated into `develop`. The integration date comes from the merge of the
+ * pull request that declares the story as `HU: <n>`.
  */
-export function leadTime(traces: StoryTrace[], deploys: string[]): LeadTimeResult {
+export function leadTime(traces: StoryTrace[], merges: Map<number, string>): LeadTimeResult {
   const items = traces
     .filter((trace) => trace.readyAt !== null)
     .map((trace) => {
-      const deployedAt = trace.doneAt !== null ? firstDeployAfter(trace.doneAt, deploys) : null;
+      const storyNumber = storyNumberOf(trace.name);
+      const integratedAt = storyNumber === null ? null : (merges.get(storyNumber) ?? null);
       const activeDays =
-        trace.readyAt !== null && deployedAt !== null ? activeDaysBetween(trace.readyAt, deployedAt) : null;
-      return { id: trace.id, name: trace.name, readyAt: trace.readyAt, deployedAt, activeDays };
+        trace.readyAt !== null && integratedAt !== null ? activeDaysBetween(trace.readyAt, integratedAt) : null;
+      return { id: trace.id, name: trace.name, storyNumber, readyAt: trace.readyAt, integratedAt, activeDays };
     });
 
   const measurable = items.filter(

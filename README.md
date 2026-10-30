@@ -15,7 +15,7 @@ El documento normativo de las métricas vive en [`docs/Metricas.md`](docs/Metric
 | 2.1 Cobertura de reglas de negocio | Reporte JSON de Vitest | Completa |
 | 2.2 Eficiencia operativa (UX) | Medición manual E2E | Manual por decisión del SPMP |
 | 3.1 Throughput semanal | ClickUp | Completa |
-| 3.2 Lead Time | ClickUp | Completa, con proxy de despliegue |
+| 3.2 Lead Time | GitHub | Completa, con merge a `develop` |
 
 ## Cómo se obtiene cada dato
 
@@ -24,11 +24,21 @@ El documento normativo de las métricas vive en [`docs/Metricas.md`](docs/Metric
 estado de cada tarjeta en `state/snapshots/`. La transición a `in progress` se reconstruye por
 diferencia entre snapshots; la finalización usa el `date_closed` exacto de ClickUp.
 
-**Lead Time.** Arranca en el pase a `ready to do` y termina en el despliegue. La fecha de despliegue
-sale de la corrida exitosa del workflow `deploy_heroku.yml` de `Proyecto3_Back`: GitHub no crea un
-Deployment salvo que el job declare `environment`, así que la corrida del workflow es el evento real.
+**Lead Time.** Arranca en el pase a `ready to do` y termina cuando la historia se integra en
+`develop`. La fecha sale del Pull Request mergeado a esa rama que declara la historia en su cuerpo:
+
+```
+HU: 8
+Reglas: RN-17, RN-20
+```
+
+Si una historia toca los dos repositorios, la integración se completa con el merge más tardío.
 Los días se cuentan **activos**, según `config/calendario.json`: la semana 5 del cronograma es una
 pausa programada y no suma.
+
+**Throughput.** Es un promedio, no una cuota semanal: se promedian las HUs completadas en las
+semanas de desarrollo ya cerradas. Las semanas de planificación y la pausa quedan fuera de la
+muestra, y la semana en curso se informa pero no se promedia.
 
 **Cobertura de reglas.** Cada test declara las reglas que verifica en su nombre:
 
@@ -84,5 +94,5 @@ Para que eso sea usable durante el desarrollo, el gate corre **por historia**:
 ## Limitaciones conocidas
 
 - El inicio del Cycle Time tiene precisión de un día, porque se observa por snapshot diario.
-- El Lead Time toma el primer deploy exitoso posterior al cierre de la historia. Si dos historias cierran juntas, comparten ese deploy.
+- El Lead Time requiere que el Pull Request declare `HU: <n>` y que la historia se integre a `develop`. Sin esa declaración la historia no es medible.
 - Los snapshots se versionan en el repositorio: sin ellos se pierde el historial de transiciones.

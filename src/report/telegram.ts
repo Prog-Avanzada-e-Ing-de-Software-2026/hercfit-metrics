@@ -27,7 +27,9 @@ export function buildTelegramMessage(input: ReportInput): string {
     );
   }
   if (input.throughput.evaluated && !input.throughput.meetsTarget) {
-    alerts.push(`Throughput: ${input.throughput.total} HUs esta semana (objetivo ${settings.thresholds.throughput.min})`);
+    alerts.push(
+      `Throughput: promedio ${input.throughput.average} HUs/semana (objetivo > ${settings.thresholds.throughput.min})`,
+    );
   }
   if (input.leadTime.exceeded.length > 0) {
     alerts.push(`Lead Time > ${settings.thresholds.leadTime} d activos en ${input.leadTime.exceeded.length} HU`);
@@ -44,7 +46,7 @@ export function buildTelegramMessage(input: ReportInput): string {
 
   lines.push('');
   lines.push(`Cycle Time: ${input.cycleTime.averageDays ?? 'sin datos'} d`);
-  lines.push(`Throughput: ${input.throughput.total} HUs`);
+  lines.push(`Throughput: ${input.throughput.average ?? 'sin datos'} HUs/semana`);
   lines.push(`Lead Time: ${input.leadTime.averageActiveDays ?? 'sin datos'} d activos`);
   if (input.reviewRate) lines.push(`Revision PRs: ${input.reviewRate.rate ?? 'sin datos'}%`);
   if (input.ruleCoverage) lines.push(`Reglas: ${input.ruleCoverage.percentage}%`);

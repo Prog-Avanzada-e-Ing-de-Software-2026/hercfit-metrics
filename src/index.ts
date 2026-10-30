@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { settings } from './config.js';
+import { calendar, settings } from './config.js';
 import { currentWeek, isoDate } from './calendar.js';
 import { fetchListTasks } from './clickup/client.js';
 import { buildTraces, readSnapshots, writeSnapshot } from './snapshot.js';
@@ -8,7 +8,7 @@ import { cycleTime } from './metrics/cycle-time.js';
 import { throughput } from './metrics/throughput.js';
 import { leadTime } from './metrics/lead-time.js';
 import { reviewRate } from './github/review-rate.js';
-import { fetchDeployDates } from './github/deployments.js';
+import { fetchDevelopMerges } from './github/merges.js';
 import { ruleCoverage } from './rules/coverage.js';
 import { renderMarkdown } from './report/markdown.js';
 import type { ReportInput } from './report/markdown.js';
@@ -40,22 +40,24 @@ async function main(): Promise<void> {
   ];
 
   const cycle = cycleTime(traces, today);
-  const flow = throughput(traces, bounds.start, bounds.end, week?.desarrollo ?? false);
+  const flow = throughput(traces, calendar.semanas, today);
 
-  let deploys: string[] = [];
+  let merges = new Map<number, string>();
   if (settings.github.token) {
     try {
-      deploys = await fetchDeployDates();
-      console.log(`Deploys exitosos detectados: ${deploys.length}.`);
+      merges = await fetchDevelopMerges();
+      console.log(`Historias integradas en ${settings.github.integrationBranch}: ${merges.size}.`);
     } catch (error) {
-      warnings.push(`No se pudieron leer los deploys: ${(error as Error).message}`);
+      warnings.push(`No se pudieron leer los merges a ${settings.github.integrationBranch}: ${(error as Error).message}`);
     }
   }
-  if (deploys.length === 0) {
-    warnings.push('Sin deploys exitosos registrados: el Lead Time queda sin datos hasta el primer deploy.');
+  if (merges.size === 0) {
+    warnings.push(
+      `Sin merges a ${settings.github.integrationBranch} con la historia declarada: el Lead Time queda sin datos. Cada PR debe incluir una linea "HU: <n>".`,
+    );
   }
 
-  const lead = leadTime(traces, deploys);
+  const lead = leadTime(traces, merges);
 
   let review = null;
   if (settings.github.token) {

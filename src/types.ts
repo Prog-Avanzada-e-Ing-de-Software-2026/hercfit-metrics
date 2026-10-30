@@ -60,11 +60,19 @@ export interface CycleTimeResult {
   }>;
 }
 
+export interface ThroughputWeek {
+  n: number;
+  start: string;
+  end: string;
+  count: number;
+}
+
 export interface ThroughputResult {
-  weekStart: string;
-  weekEnd: string;
-  stories: Array<{ id: string; name: string; doneAt: string }>;
-  total: number;
+  /** Stories closed during the currently running week, for context only. */
+  current: { start: string; end: string; count: number; development: boolean } | null;
+  /** Completed development weeks: the sample behind the average. */
+  weeks: ThroughputWeek[];
+  average: number | null;
   meetsTarget: boolean;
   evaluated: boolean;
 }
@@ -72,7 +80,14 @@ export interface ThroughputResult {
 export interface LeadTimeResult {
   averageActiveDays: number | null;
   sample: number;
-  items: Array<{ id: string; name: string; activeDays: number | null; readyAt: string | null; deployedAt: string | null }>;
+  items: Array<{
+    id: string;
+    name: string;
+    storyNumber: number | null;
+    readyAt: string | null;
+    integratedAt: string | null;
+    activeDays: number | null;
+  }>;
   exceeded: Array<{ id: string; name: string; activeDays: number }>;
 }
 

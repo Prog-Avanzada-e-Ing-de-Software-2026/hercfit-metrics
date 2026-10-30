@@ -68,8 +68,8 @@ export function renderMarkdown(input: ReportInput): string {
     )} |`,
   );
   lines.push(
-    `| 3.1 Throughput | ${input.throughput.total} HUs | ${thresholds.throughput.min}-${thresholds.throughput.max} HUs | ${
-      input.throughput.evaluated ? mark(input.throughput.meetsTarget) : 'no evaluada'
+    `| 3.1 Throughput | ${number(input.throughput.average, ' HUs/semana')} | > ${thresholds.throughput.min} HUs/semana | ${
+      input.throughput.evaluated ? mark(input.throughput.meetsTarget) : 'sin semanas cerradas'
     } |`,
   );
   lines.push(
@@ -136,29 +136,42 @@ export function renderMarkdown(input: ReportInput): string {
 
   lines.push('## 3.1 Throughput');
   lines.push('');
+  lines.push('Promedio de HUs completadas por semana de desarrollo. No incluye semanas de planificacion ni la pausa programada.');
+  lines.push('');
   if (!input.throughput.evaluated) {
-    lines.push('Semana sin foco de desarrollo: el indicador no se evalua.');
-  } else if (input.throughput.total === 0) {
-    lines.push('Sin historias completadas en la semana.');
+    lines.push('Sin semanas de desarrollo cerradas todavia: el promedio se calcula al terminar la primera.');
   } else {
-    for (const story of input.throughput.stories) {
-      lines.push(`- ${story.name} (${story.doneAt})`);
+    lines.push('| Semana | Rango | HUs completadas |');
+    lines.push('| --- | --- | --- |');
+    for (const week of input.throughput.weeks) {
+      lines.push(`| ${week.n} | ${week.start} a ${week.end} | ${week.count} |`);
     }
+    lines.push('');
+    lines.push(`Promedio: ${input.throughput.average} HUs por semana.`);
+  }
+  if (input.throughput.current) {
+    const current = input.throughput.current;
+    lines.push('');
+    lines.push(
+      `Semana en curso (${current.start} a ${current.end}): ${current.count} HUs${
+        current.development ? '' : ' — sin foco de desarrollo'
+      }.`,
+    );
   }
   lines.push('');
 
   lines.push('## 3.2 Lead Time');
   lines.push('');
-  lines.push('Dias activos entre el pase a "Ready to do" y el primer deploy exitoso posterior al cierre. La semana 5 del cronograma no cuenta.');
+  lines.push('Dias activos entre el pase a "Ready to do" y la integracion en develop. La semana 5 del cronograma no cuenta.');
   lines.push('');
   if (input.leadTime.sample === 0) {
-    lines.push('Sin historias medibles todavia.');
+    lines.push('Sin historias medibles todavia: hace falta un PR mergeado a develop que declare "HU: <n>".');
   } else {
-    lines.push('| HU | Ready to do | Desplegada | Dias activos |');
+    lines.push('| HU | Ready to do | Integrada en develop | Dias activos |');
     lines.push('| --- | --- | --- | --- |');
     for (const item of input.leadTime.items) {
       lines.push(
-        `| ${item.name} | ${item.readyAt ?? '-'} | ${item.deployedAt ?? '-'} | ${item.activeDays ?? '-'} |`,
+        `| ${item.name} | ${item.readyAt ?? '-'} | ${item.integratedAt ?? '-'} | ${item.activeDays ?? '-'} |`,
       );
     }
   }

@@ -51,6 +51,7 @@ export const settings = {
       repo: 'Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back',
       workflow: 'deploy_heroku.yml',
     },
+    integrationBranch: 'develop',
   },
   telegram: {
     token: process.env.TELEGRAM_BOT_TOKEN ?? '',
@@ -61,8 +62,8 @@ export const settings = {
     cycleTime: { small: 4, large: 7 },
     // 1.2 Review rate, percentage.
     reviewRate: 70,
-    // 3.1 Throughput, stories per active development week.
-    throughput: { min: 3, max: 6 },
+    // 3.1 Throughput: the weekly average must be greater than this value.
+    throughput: { min: 4 },
     // 3.2 Lead Time, active development days.
     leadTime: 14,
     // 2.1 Rule coverage, percentage.
