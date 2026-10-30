@@ -57,7 +57,7 @@ export function renderMarkdown(input: ReportInput): string {
   );
   lines.push(
     `| 1.2 Revision de PRs | ${number(input.reviewRate?.rate ?? null, ' %')} | >= ${thresholds.reviewRate} % | ${mark(
-      input.reviewRate ? input.reviewRate.meetsTarget : null,
+      input.reviewRate && input.reviewRate.rate !== null ? input.reviewRate.meetsTarget : null,
     )} |`,
   );
   lines.push(
