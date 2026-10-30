@@ -1,7 +1,14 @@
 {
   "date": "2026-10-30",
-  "takenAt": "2026-10-30T02:39:11.692Z",
+  "takenAt": "2026-10-30T03:04:51.576Z",
   "tasks": {
+    "86e3x9m6m": {
+      "id": "86e3x9m6m",
+      "name": "Setup Back-End",
+      "status": "ready to do",
+      "points": null,
+      "isStory": false
+    },
     "86e3x8d3n": {
       "id": "86e3x8d3n",
       "name": "Explicacion de automatizacion de metricas",
@@ -278,7 +285,7 @@
     "86e3vmy44": {
       "id": "86e3vmy44",
       "name": "Despliegue inicial",
-      "status": "in progress",
+      "status": "complete",
       "points": null,
       "isStory": false
     },
