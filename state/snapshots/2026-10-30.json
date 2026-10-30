@@ -1,7 +1,21 @@
 {
   "date": "2026-10-30",
-  "takenAt": "2026-10-30T03:05:58.823Z",
+  "takenAt": "2026-10-30T17:29:13.654Z",
   "tasks": {
+    "86e3xbtk1": {
+      "id": "86e3xbtk1",
+      "name": "Setup Front-End",
+      "status": "planning",
+      "points": null,
+      "isStory": false
+    },
+    "86e3xau6y": {
+      "id": "86e3xau6y",
+      "name": "Setup Front-End",
+      "status": "planning",
+      "points": null,
+      "isStory": false
+    },
     "86e3x9m6m": {
       "id": "86e3x9m6m",
       "name": "Setup Back-End",
@@ -187,7 +201,7 @@
     "86e3x511a": {
       "id": "86e3x511a",
       "name": "Evaluacion metrica 2.2",
-      "status": "planning",
+      "status": "ready to do",
       "points": null,
       "isStory": false
     },
@@ -236,7 +250,7 @@
     "86e3w4884": {
       "id": "86e3w4884",
       "name": "Definir metricas",
-      "status": "in review",
+      "status": "complete",
       "points": null,
       "isStory": false
     },
@@ -257,7 +271,7 @@
     "86e3vpjrv": {
       "id": "86e3vpjrv",
       "name": "Guia de despliegue",
-      "status": "planning",
+      "status": "complete",
       "points": null,
       "isStory": false
     },
@@ -271,7 +285,7 @@
     "86e3vmy7v": {
       "id": "86e3vmy7v",
       "name": "Evaluación de métricas",
-      "status": "in progress",
+      "status": "in review",
       "points": null,
       "isStory": false
     },
