@@ -106,7 +106,7 @@ Evalúan las características internas y externas del software entregado: tanto 
 * **Fórmula de la Métrica:**  
   **Índice de Eficiencia \= (T\_real / T\_meta) × 100**  
 * **¿Por qué la elegimos?** El propósito central del MVP de HercFit es reemplazar el registro manual en papel para evitar que los alumnos y profesores abandonen el seguimiento por resultar tedioso. La *Visión del Dominio* establece explícitamente metas de tiempo para saber si el producto es exitoso (ej. registrar un ejercicio y sus series en ≤ 30s, consultar un plan en ≤ 5s, registrar un plan nuevo en ≤ 60s). Esta métrica cuantifica directamente la usabilidad y velocidad de respuesta del producto (frontend \+ backend).  
-* **¿Cómo la vamos a medir?** Durante las pruebas funcionales y anuales **E2E** en navegador web (móvil para alumnos y escritorio para profesores), cronometrando 5 ejecuciones de cada uno de los 5 flujos principales y calculando el tiempo promedio obtenido para cada flujo sobre el entorno desplegado en Heroku/Neon Tech.  
+* **¿Cómo la vamos a medir?** Durante las pruebas funcionales y manuales **E2E** en navegador web (móvil para alumnos y escritorio para profesores), cronometrando 5 ejecuciones de cada uno de los 5 flujos principales y calculando el tiempo promedio obtenido para cada flujo sobre el entorno desplegado en Heroku/Neon Tech.  
 * **Indicador asociado (Umbral):** El índice promedio de eficiencia debe ser menor al 120% del tiempo meta en los 5 flujos del dominio evaluados. Si en una prueba aislada se supera el 100% del tiempo establecido, se tomará como una advertencia. Solo se exigirá un rediseño obligatorio en la interacción de la UI o una optimización en la base de datos si el tiempo promedio de la tarea supera el 120%, o si más de una prueba particular presenta bloqueos graves que superen holgadamente este límite. 
 
 # ***3\. Métricas de Proyecto*** {#3.-métricas-de-proyecto}
@@ -121,7 +121,7 @@ Evalúan la salud gerencial del proyecto: el control del cronograma, el cumplimi
   **Throughput Semanal \= Total de HUs en estado "Done" por semana**  
 * **¿Por qué elegirla?** Mide la **cadencia y velocidad real de entrega del equipo** por unidad de tiempo sin importar la estimación previa. Es clave en Kanban para detectar si el equipo se está desacelerando o si los límites de trabajo en progreso (WIP) están funcionando bien.  
 * **¿Cómo medirla?** Al finalizar cada semana de desarrollo desde los reportes de ClickUp.  
-* **Indicador asociado (Umbral):** El promedio de HUs completadas por semana debe ser mayor a **4**. Si el rendimiento cae por debajo de este valor, se convocará inmediatamente a una reunión de equipo para analizar los inconvenientes y ajustar el flujo de trabajo.
+* **Indicador asociado (Umbral):** El promedio de HUs completadas por semana debe ser mayor o igual a **4**. Si el rendimiento cae por debajo de este valor, se convocará inmediatamente a una reunión de equipo para analizar los inconvenientes y ajustar el flujo de trabajo.
 
 ## *3.2. Lead Time de Funcionalidad (Tiempo Total de Entrega)* {#3.2.-lead-time-de-funcionalidad-(tiempo-total-de-entrega)}
 
@@ -129,7 +129,7 @@ Evalúan la salud gerencial del proyecto: el control del cronograma, el cumplimi
   * Timestamp en el que la historia de usuario pasa al estado "Ready to do" (lista para ser desarrollada), dejando de contabilizar el tiempo pasivo en el backlog general.   
   * Timestamp en el que finalmente se integra en la rama develop.  
 * **Fórmula de la Métrica**  
-  **Lead Time Promedio \= $\Sigma$ (Timestamp de Despliegue \- Timestamp de pase a "Ready to do") / Cantidad de HUs evaluadas.**   
+  **Lead Time Promedio \= $\Sigma$ (Timestamp de integración en develop \- Timestamp de pase a "Ready to do") / Cantidad de HUs evaluadas.**   
 * **¿Por qué la elegimos?** Complementa perfectamente la métrica de *Cycle Time*. Mientras el ciclo evalúa estrictamente el tiempo de desarrollo del equipo, el *Lead Time* evalúa la salud gerencial del proyecto: cuánto tarda una necesidad de negocio en ser construida e integrada en la rama develop para validar el funcionamiento del MVP, de cara al despliegue final en la Semana 9\.   
 * **Indicador asociado (Umbral):** El promedio de entrega debe ser inferior a 14 días activos de desarrollo (excluyendo formalmente los períodos de pausa programada o inactividad académica del equipo) para funcionalidades troncales como el registro de planes o visualización de métricas. **Si el Lead Time de días activos supera este límite**, **se disparará una sesión de refinamiento para desglosar (split) las próximas historias en entregables más pequeños**, y **se evaluará reducir en 1 el límite WIP (Work In Progress) en ClickUp** para forzar el cierre de tareas en curso. 
 
@@ -163,7 +163,7 @@ La evaluación se automatiza mediante el repositorio **`hercfit-metrics`**, que 
 | 1.1 Cycle Time | Promedio de días entre *In Progress* y la fecha de cierre | 4 días (1-2 SP), 7 días (5 SP) |
 | 1.2 Tasa de revisión | PRs con ≥ 2 aprobaciones / PRs mergeadas × 100 | ≥ 70 % |
 | 2.1 Cobertura de reglas | Reglas con test que pasa / reglas del documento × 100 | 100 % antes del despliegue final |
-| 3.1 Throughput | Promedio de HUs completadas por semana de desarrollo | > 4 HUs por semana |
+| 3.1 Throughput | Promedio de HUs completadas por semana de desarrollo | ≥ 4 HUs por semana |
 | 3.2 Lead Time | Promedio de días activos entre *Ready to do* y el merge a `develop` | < 14 días activos |
 
 El Lead Time excluye los períodos de pausa programada definidos en el cronograma del proyecto. El Throughput promedia únicamente semanas con foco de desarrollo, por lo que las semanas de planificación y la pausa no afectan el indicador.

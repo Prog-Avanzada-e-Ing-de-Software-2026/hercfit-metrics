@@ -68,7 +68,7 @@ export function renderMarkdown(input: ReportInput): string {
     )} |`,
   );
   lines.push(
-    `| 3.1 Throughput | ${number(input.throughput.average, ' HUs/semana')} | > ${thresholds.throughput.min} HUs/semana | ${
+    `| 3.1 Throughput | ${number(input.throughput.average, ' HUs/semana')} | >= ${thresholds.throughput.min} HUs/semana | ${
       input.throughput.evaluated ? mark(input.throughput.meetsTarget) : 'sin semanas cerradas'
     } |`,
   );

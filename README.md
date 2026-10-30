@@ -37,8 +37,9 @@ Los días se cuentan **activos**, según `config/calendario.json`: la semana 5 d
 pausa programada y no suma.
 
 **Throughput.** Es un promedio, no una cuota semanal: se promedian las HUs completadas en las
-semanas de desarrollo ya cerradas. Las semanas de planificación y la pausa quedan fuera de la
-muestra, y la semana en curso se informa pero no se promedia.
+semanas de desarrollo ya cerradas y el resultado debe ser **mayor o igual a 4**. Las semanas de
+planificación y la pausa quedan fuera de la muestra, y la semana en curso se informa pero no se
+promedia.
 
 **Cobertura de reglas.** Cada test declara las reglas que verifica en su nombre:
 

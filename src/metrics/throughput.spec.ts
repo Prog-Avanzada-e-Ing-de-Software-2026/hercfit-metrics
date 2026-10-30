@@ -44,6 +44,22 @@ describe('throughput promedio', () => {
     expect(result.meetsTarget).toBe(true);
   });
 
+  it('acepta un promedio exactamente igual al umbral', () => {
+    const traces = [
+      trace('HU 1', '2026-11-03'),
+      trace('HU 2', '2026-11-04'),
+      trace('HU 3', '2026-11-05'),
+      trace('HU 4', '2026-11-06'),
+      trace('HU 5', '2026-11-17'),
+      trace('HU 6', '2026-11-18'),
+      trace('HU 7', '2026-11-19'),
+      trace('HU 8', '2026-11-20'),
+    ];
+    const result = throughput(traces, weeks, '2026-11-25');
+    expect(result.average).toBe(4);
+    expect(result.meetsTarget).toBe(true);
+  });
+
   it('marca alerta cuando el promedio no supera el umbral', () => {
     const traces = [
       trace('HU 1', '2026-11-03'),

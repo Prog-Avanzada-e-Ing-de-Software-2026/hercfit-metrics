@@ -28,7 +28,7 @@ export function buildTelegramMessage(input: ReportInput): string {
   }
   if (input.throughput.evaluated && !input.throughput.meetsTarget) {
     alerts.push(
-      `Throughput: promedio ${input.throughput.average} HUs/semana (objetivo > ${settings.thresholds.throughput.min})`,
+      `Throughput: promedio ${input.throughput.average} HUs/semana (objetivo >= ${settings.thresholds.throughput.min})`,
     );
   }
   if (input.leadTime.exceeded.length > 0) {

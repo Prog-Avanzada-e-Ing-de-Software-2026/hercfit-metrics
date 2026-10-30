@@ -62,7 +62,7 @@ export const settings = {
     cycleTime: { small: 4, large: 7 },
     // 1.2 Review rate, percentage.
     reviewRate: 70,
-    // 3.1 Throughput: the weekly average must be greater than this value.
+    // 3.1 Throughput: the weekly average must be at least this value.
     throughput: { min: 4 },
     // 3.2 Lead Time, active development days.
     leadTime: 14,

@@ -6,9 +6,9 @@ import type { StoryTrace, ThroughputResult, ThroughputWeek } from '../types.js';
 
 /**
  * The indicator is an average, not a weekly quota: "el promedio de HUs
- * completadas por semana debe ser mayor a 4". The sample is every completed
- * development week, so planning and pause weeks never drag the average down
- * and a week still in progress is not counted as a zero.
+ * completadas por semana debe ser mayor o igual a 4". The sample is every
+ * completed development week, so planning and pause weeks never drag the
+ * average down and a week still in progress is not counted as a zero.
  */
 export function throughput(traces: StoryTrace[], weeks: WeekWindow[], today: string): ThroughputResult {
   const done = traces.filter((trace): trace is StoryTrace & { doneAt: string } => trace.doneAt !== null);
@@ -43,7 +43,7 @@ export function throughput(traces: StoryTrace[], weeks: WeekWindow[], today: str
     current,
     weeks: completed,
     average,
-    meetsTarget: average === null ? true : average > settings.thresholds.throughput.min,
+    meetsTarget: average === null ? true : average >= settings.thresholds.throughput.min,
     evaluated,
   };
 }
