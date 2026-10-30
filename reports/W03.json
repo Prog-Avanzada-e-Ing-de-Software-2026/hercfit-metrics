@@ -7,7 +7,7 @@
     "desarrollo": false,
     "foco": "Backlog estimado, metricas, plan de pruebas y entorno base"
   },
-  "generatedAt": "2026-10-30T02:19:15.873Z",
+  "generatedAt": "2026-10-30T02:39:12.444Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -15,10 +15,14 @@
     "openOverdue": []
   },
   "throughput": {
-    "weekStart": "2026-10-26",
-    "weekEnd": "2026-11-02",
-    "stories": [],
-    "total": 0,
+    "current": {
+      "start": "2026-10-26",
+      "end": "2026-11-02",
+      "count": 0,
+      "development": false
+    },
+    "weeks": [],
+    "average": null,
     "meetsTarget": true,
     "evaluated": false
   },
@@ -49,6 +53,7 @@
   "ruleCoverage": null,
   "warnings": [
     "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
+    "Sin merges a develop con la historia declarada: el Lead Time queda sin datos. Cada PR debe incluir una linea \"HU: <n>\".",
     "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
   ]
 }
