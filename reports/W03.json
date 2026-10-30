@@ -7,7 +7,7 @@
     "desarrollo": false,
     "foco": "Backlog estimado, metricas, plan de pruebas y entorno base"
   },
-  "generatedAt": "2026-10-29T19:51:36.405Z",
+  "generatedAt": "2026-10-30T02:19:15.873Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -49,7 +49,6 @@
   "ruleCoverage": null,
   "warnings": [
     "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
-    "El Lead Time usa la fecha de cierre de la HU como proxy del despliegue hasta que el workflow de deploy registre el evento real.",
     "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
   ]
 }
