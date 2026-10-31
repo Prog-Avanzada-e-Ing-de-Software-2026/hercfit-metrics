@@ -7,7 +7,7 @@
     "desarrollo": false,
     "foco": "Backlog estimado, metricas, plan de pruebas y entorno base"
   },
-  "generatedAt": "2026-10-30T17:29:16.637Z",
+  "generatedAt": "2026-10-31T16:33:34.550Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -33,20 +33,20 @@
     "exceeded": []
   },
   "reviewRate": {
-    "merged": 2,
-    "reviewed": 1,
-    "rate": 50,
-    "meetsTarget": false,
+    "merged": 4,
+    "reviewed": 3,
+    "rate": 75,
+    "meetsTarget": true,
     "repositories": [
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
-        "merged": 1,
-        "reviewed": 0
+        "merged": 2,
+        "reviewed": 1
       },
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
-        "merged": 1,
-        "reviewed": 1
+        "merged": 2,
+        "reviewed": 2
       }
     ]
   },
