@@ -1,0 +1,59 @@
+{
+  "week": {
+    "n": 4,
+    "desde": "2026-11-02",
+    "hasta": "2026-11-09",
+    "activa": true,
+    "desarrollo": true,
+    "foco": "Modulo de planes de entrenamiento"
+  },
+  "generatedAt": "2026-11-02T21:07:23.261Z",
+  "cycleTime": {
+    "averageDays": null,
+    "sample": 0,
+    "items": [],
+    "openOverdue": []
+  },
+  "throughput": {
+    "current": {
+      "start": "2026-11-02",
+      "end": "2026-11-09",
+      "count": 0,
+      "development": true
+    },
+    "weeks": [],
+    "average": null,
+    "meetsTarget": true,
+    "evaluated": false
+  },
+  "leadTime": {
+    "averageActiveDays": null,
+    "sample": 0,
+    "items": [],
+    "exceeded": []
+  },
+  "reviewRate": {
+    "merged": 0,
+    "reviewed": 0,
+    "rate": null,
+    "meetsTarget": false,
+    "repositories": [
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
+        "merged": 0,
+        "reviewed": 0
+      },
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
+        "merged": 0,
+        "reviewed": 0
+      }
+    ]
+  },
+  "ruleCoverage": null,
+  "warnings": [
+    "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
+    "Sin merges a develop con la historia declarada: el Lead Time queda sin datos. Cada PR debe incluir una linea \"HU: <n>\".",
+    "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
+  ]
+}
