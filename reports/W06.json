@@ -7,7 +7,7 @@
     "desarrollo": true,
     "foco": "Entrenamientos, estadisticas y catalogo"
   },
-  "generatedAt": "2026-11-18T19:45:59.582Z",
+  "generatedAt": "2026-11-19T19:46:05.185Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -40,15 +40,15 @@
     "exceeded": []
   },
   "reviewRate": {
-    "merged": 0,
-    "reviewed": 0,
-    "rate": null,
-    "meetsTarget": false,
+    "merged": 1,
+    "reviewed": 1,
+    "rate": 100,
+    "meetsTarget": true,
     "repositories": [
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
-        "merged": 0,
-        "reviewed": 0
+        "merged": 1,
+        "reviewed": 1
       },
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
@@ -60,7 +60,6 @@
   "ruleCoverage": null,
   "warnings": [
     "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
-    "Sin merges a develop con la historia declarada: el Lead Time queda sin datos. Cada PR debe incluir una linea \"HU: <n>\".",
     "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
   ]
 }
