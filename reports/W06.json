@@ -7,12 +7,20 @@
     "desarrollo": true,
     "foco": "Entrenamientos, estadisticas y catalogo"
   },
-  "generatedAt": "2026-11-20T19:26:56.423Z",
+  "generatedAt": "2026-11-21T18:28:58.663Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
     "items": [],
-    "openOverdue": []
+    "openOverdue": [
+      {
+        "id": "86e3x5n3k",
+        "name": "HU 14 - Iniciar sesión",
+        "points": 2,
+        "days": 5,
+        "threshold": 4
+      }
+    ]
   },
   "throughput": {
     "current": {
