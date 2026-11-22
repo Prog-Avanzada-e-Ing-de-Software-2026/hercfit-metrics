@@ -7,7 +7,7 @@
     "desarrollo": true,
     "foco": "Entrenamientos, estadisticas y catalogo"
   },
-  "generatedAt": "2026-11-21T18:28:58.663Z",
+  "generatedAt": "2026-11-22T18:51:35.073Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -17,7 +17,7 @@
         "id": "86e3x5n3k",
         "name": "HU 14 - Iniciar sesión",
         "points": 2,
-        "days": 5,
+        "days": 6,
         "threshold": 4
       }
     ]
@@ -48,14 +48,14 @@
     "exceeded": []
   },
   "reviewRate": {
-    "merged": 1,
+    "merged": 2,
     "reviewed": 1,
-    "rate": 100,
-    "meetsTarget": true,
+    "rate": 50,
+    "meetsTarget": false,
     "repositories": [
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
-        "merged": 1,
+        "merged": 2,
         "reviewed": 1
       },
       {
