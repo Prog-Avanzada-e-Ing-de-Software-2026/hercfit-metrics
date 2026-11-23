@@ -1,0 +1,79 @@
+{
+  "week": {
+    "n": 7,
+    "desde": "2026-11-23",
+    "hasta": "2026-11-30",
+    "activa": true,
+    "desarrollo": true,
+    "foco": "Validacion con el Product Owner y ajustes"
+  },
+  "generatedAt": "2026-11-23T23:06:13.247Z",
+  "cycleTime": {
+    "averageDays": null,
+    "sample": 0,
+    "items": [],
+    "openOverdue": [
+      {
+        "id": "86e3x5n3k",
+        "name": "HU 14 - Iniciar sesión",
+        "points": 2,
+        "days": 7,
+        "threshold": 4
+      }
+    ]
+  },
+  "throughput": {
+    "current": {
+      "start": "2026-11-23",
+      "end": "2026-11-30",
+      "count": 0,
+      "development": true
+    },
+    "weeks": [
+      {
+        "n": 4,
+        "start": "2026-11-02",
+        "end": "2026-11-09",
+        "count": 0
+      },
+      {
+        "n": 6,
+        "start": "2026-11-16",
+        "end": "2026-11-23",
+        "count": 0
+      }
+    ],
+    "average": 0,
+    "meetsTarget": false,
+    "evaluated": true
+  },
+  "leadTime": {
+    "averageActiveDays": null,
+    "sample": 0,
+    "items": [],
+    "exceeded": []
+  },
+  "reviewRate": {
+    "merged": 0,
+    "reviewed": 0,
+    "rate": null,
+    "meetsTarget": false,
+    "repositories": [
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Back",
+        "merged": 0,
+        "reviewed": 0
+      },
+      {
+        "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
+        "merged": 0,
+        "reviewed": 0
+      }
+    ]
+  },
+  "ruleCoverage": null,
+  "warnings": [
+    "El Cycle Time arranca con el primer snapshot diario: el inicio de una HU tiene precision de 1 dia.",
+    "Cobertura de reglas omitida: no se encontro el reporte JSON de Vitest."
+  ]
+}
