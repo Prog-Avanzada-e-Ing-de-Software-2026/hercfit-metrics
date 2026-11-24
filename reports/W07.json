@@ -7,7 +7,7 @@
     "desarrollo": true,
     "foco": "Validacion con el Product Owner y ajustes"
   },
-  "generatedAt": "2026-11-23T23:06:13.247Z",
+  "generatedAt": "2026-11-24T21:45:05.842Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -17,7 +17,7 @@
         "id": "86e3x5n3k",
         "name": "HU 14 - Iniciar sesión",
         "points": 2,
-        "days": 7,
+        "days": 8,
         "threshold": 4
       }
     ]
@@ -54,9 +54,9 @@
     "exceeded": []
   },
   "reviewRate": {
-    "merged": 0,
+    "merged": 1,
     "reviewed": 0,
-    "rate": null,
+    "rate": 0,
     "meetsTarget": false,
     "repositories": [
       {
@@ -66,7 +66,7 @@
       },
       {
         "repo": "Prog-Avanzada-e-Ing-de-Software-2026/Proyecto3_Front",
-        "merged": 0,
+        "merged": 1,
         "reviewed": 0
       }
     ]
