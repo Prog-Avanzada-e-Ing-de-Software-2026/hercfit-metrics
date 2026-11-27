@@ -7,7 +7,7 @@
     "desarrollo": true,
     "foco": "Validacion con el Product Owner y ajustes"
   },
-  "generatedAt": "2026-11-26T20:43:56.470Z",
+  "generatedAt": "2026-11-27T20:29:02.883Z",
   "cycleTime": {
     "averageDays": null,
     "sample": 0,
@@ -17,7 +17,7 @@
         "id": "86e3x5n3k",
         "name": "HU 14 - Iniciar sesión",
         "points": 2,
-        "days": 10,
+        "days": 11,
         "threshold": 4
       }
     ]
